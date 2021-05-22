@@ -1,0 +1,16 @@
+{
+  "name": "first-node-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "scripts/start.sh",
+    "node-container-sh": "docker run -it romantuom/first-node-app:latest sh",
+    "start": "node index.js"
+  },
+  "author": "Roman Tuomisto",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
