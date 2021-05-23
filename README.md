@@ -29,3 +29,15 @@ then once it is configured run:
 followed by `docker run romantuom/redis:latest`
 
 `docker build -t romantuom/first-node-app:latest . && docker run -p 8080:8080 romantuom/first-node-app:latest`
+
+## Docker Compose
+
+Docker compose file is used to run and connect multiple containers under same network and enabling to have access to each other.
+
+First time or when changes are made to app files run: `docker compose up --build`.
+
+All other times we can run:
+
+`docker compose up -d` to run in the background or `docker compose up`.
+
+To stop all running containers use `docker compose domn`

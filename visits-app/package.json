@@ -1,0 +1,15 @@
+{
+  "name": "visits-app",
+  "version": "1.0.0",
+  "description": "visit counting app with node and redis",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Roman Tuomisto",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "redis": "^3.1.2"
+  }
+}
