@@ -15,6 +15,10 @@ COPY ./ ./
 # Tell the image what to do, when it starts as a container
 RUN npm run build
 
+# Installs Nginx from image
 FROM nginx
+
+# Exposes Nginx port 80 from inside of the container
+EXPOSE 80
 
 COPY --from=build-phase /react-app/build /usr/share/nginx/html
