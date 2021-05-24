@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t romantuom/ci-cd-with-docker -f ./ci-cd-with-docker/Dockerfile.dev ./ci-cd-with-docker
+
+script:
+  - docker run -e CI=true romantuom/ci-cd-with-docker npm run test

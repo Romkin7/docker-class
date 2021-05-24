@@ -41,3 +41,13 @@ All other times we can run:
 `docker compose up -d` to run in the background or `docker compose up`.
 
 To stop all running containers use `docker compose domn`
+
+## React App Exits Immediately with Docker Run Command
+
+3-22-2020
+
+Due to a recent update in the Create React App library, we will need to change how we start our containers.
+
+In the upcoming lecture, you'll need to add the -it flag to run the container in interactive mode:
+
+`docker run -it -p 3000:3000 IMAGE_ID`
