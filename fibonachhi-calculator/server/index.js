@@ -10,7 +10,7 @@ app.set('ip', process.env.IP);
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/api/values', async (req, res) => {
+app.get('/values', async (req, res) => {
 	try {
 		const values = await dbQuery('SELECT * from values');
 		let calculatedValues;
@@ -23,7 +23,7 @@ app.get('/api/values', async (req, res) => {
 	}
 });
 
-app.post('/api/values', async (req, res) => {
+app.post('/values', async (req, res) => {
 	try {
 		const index = parseInt(req.body.index);
 		if (index > 40) {

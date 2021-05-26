@@ -6,10 +6,8 @@ services:
     redis:
         image: 'redis:latest'
         env_file: ./.env
-    server:
+    fiboserver:
         env_file: ./.env
-        ports:
-            - '8080:8080'
         build:
             dockerfile: Dockerfile.dev
             context: ./server
@@ -17,8 +15,6 @@ services:
             - /server/node_modules
             - ./server:/server
     client:
-        ports:
-            - '3000:3000'
         build:
             dockerfile: Dockerfile.dev
             context: ./client
@@ -28,7 +24,7 @@ services:
     worker:
         env_file: ./.env
         ports:
-            - '8000:8000'
+            - '8080:8080'
         build:
             dockerfile: Dockerfile.dev
             context: ./worker
