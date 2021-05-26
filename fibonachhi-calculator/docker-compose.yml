@@ -6,6 +6,16 @@ services:
     redis:
         image: 'redis:latest'
         env_file: ./.env
+    nginx:
+        depends_on:
+            - fiboserver
+            - client
+        restart: always
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./nginx
+        ports: 
+            - '3050:80'
     fiboserver:
         env_file: ./.env
         build:
@@ -15,6 +25,7 @@ services:
             - /server/node_modules
             - ./server:/server
     client:
+        stdin_open: true
         build:
             dockerfile: Dockerfile.dev
             context: ./client
@@ -23,8 +34,6 @@ services:
             - ./client:/client
     worker:
         env_file: ./.env
-        ports:
-            - '8080:8080'
         build:
             dockerfile: Dockerfile.dev
             context: ./worker

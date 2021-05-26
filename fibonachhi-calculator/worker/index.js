@@ -17,4 +17,5 @@ function fibonachhi(index) {
 sub.on('message', (channel, message) => {
 	redisClient.hset('values', fibonachhi(parseInt(message)));
 });
+
 sub.subscribe('insert');
