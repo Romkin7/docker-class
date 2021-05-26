@@ -1,0 +1,19 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "Fibonachhi calculator, Node , Express, Worker, Nginx, Redis, Postgres",
+  "main": "index.js",
+  "scripts": {
+    "docker:start": "scripts/start.sh",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Roman Tuomisto",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "2.0.7"
+  },
+  "dependencies": {
+    "redis": "3.1.2"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Fibonachhi calculator, Node , Express, Worker, Nginx, Redis, Postgres",
+  "main": "index.js",
+  "scripts": {
+    "docker:start": "scripts/start.sh",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Roman Tuomisto",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "pg": "8.6.0",
+    "redis": "3.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.7"
+  }
+}

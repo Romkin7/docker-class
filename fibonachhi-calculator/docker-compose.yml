@@ -1,0 +1,37 @@
+version: '3'
+services:
+    postgres:
+        image: 'postgres:latest'
+        env_file: ./.env
+    redis:
+        image: 'redis:latest'
+        env_file: ./.env
+    server:
+        env_file: ./.env
+        ports:
+            - '8080:8080'
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./server
+        volumes:
+            - /server/node_modules
+            - ./server:/server
+    client:
+        ports:
+            - '3000:3000'
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./client
+        volumes:
+            - /client/node_modules
+            - ./client:/client
+    worker:
+        env_file: ./.env
+        ports:
+            - '8000:8000'
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./worker
+        volumes:
+            - /worker/node_modules
+            - ./worker:/worker
