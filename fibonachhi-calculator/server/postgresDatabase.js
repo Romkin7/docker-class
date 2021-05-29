@@ -14,9 +14,13 @@ function connect() {
 	return pgClient;
 }
 
-module.expoert.dbQuery = function (query) {
+module.exports.dbQuery = async function (query, arr) {
 	const pgClient = connect();
-	pgClient.query(query ? query : 'CREATE TABLE IF NOT EXISTS values(number INT)').catch((err) => {
-		return console.log(err);
-	});
+	if (arr) {
+		const response = await pgClient.query(query, arr);
+		return response;
+	} else {
+		const response = await pgClient.query(query ? query : 'CREATE TABLE IF NOT EXISTS seenIndexes(number INT)');
+		return response;
+	}
 };

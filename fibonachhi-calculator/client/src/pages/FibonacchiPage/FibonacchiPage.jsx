@@ -11,7 +11,7 @@ class FibonacchiPage extends Component {
 		this.fetchValues();
 	}
 	handleChange = (event) => {
-		this.setState({ index: event.taget.value });
+		this.setState({ index: event.target.value });
 	};
 	handleSubmit = (event) => {
 		event.preventDefault();
@@ -43,7 +43,6 @@ class FibonacchiPage extends Component {
 						For index {key}, I calculated {this.state.values[key]}
 					</li>,
 				)
-				.join(', ');
 		}
 		return values;
 	};
@@ -62,7 +61,7 @@ class FibonacchiPage extends Component {
 					<ul>
 						{this.state.seenIndexes.length &&
 							this.state.seenIndexes.map((index) => {
-								return <li key={index}>{index}</li>;
+								return <li key={index.number}>{index.number}</li>;
 							})}
 					</ul>
 				</section>
