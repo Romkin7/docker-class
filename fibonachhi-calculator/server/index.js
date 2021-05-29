@@ -30,8 +30,7 @@ app.get('/values', async (req, res) => {
 
 app.post('/values', async (req, res) => {
 	try {
-		const index = req.body.index || '5';
-		console.log(req.body)
+		const index = req.body.index;
 		if (parseInt(index) > 40) {
 			return res.status(422).json({ message: 'Value is too high, please input value 40 or lower.' });
 		} else {

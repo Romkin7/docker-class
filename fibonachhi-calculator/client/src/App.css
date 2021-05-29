@@ -1,1 +1,44 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
 
+* {
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+}
+
+svg path {
+	width: 34px;
+	height: 34px;
+}
+
+nav {
+	background-color: olive;
+	box-shadow: 0 0 2px 2px darkslategray;
+	height: 4rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+main {
+	min-height: 73vh;
+	padding: 4rem;
+}
+
+footer {
+	background-color: darkolivegreen;
+	height: 12rem;
+}
+
+nav a,
+footer a {
+	text-decoration: none;
+	color: wheat;
+}

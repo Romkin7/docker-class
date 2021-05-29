@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './FibonacchiPage.css';
+import Message from '../../components/Message/Message'; 
 
 class FibonacchiPage extends Component {
 	state = {
 		seenIndexes: [],
-		values: {},
+		calculatedValues: {},
 		index: '',
+		message: {
+			visible: false,
+			color: '',
+			text: ''
+		}
 	};
 	componentDidMount() {
 		this.fetchValues();
@@ -16,7 +23,7 @@ class FibonacchiPage extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		axios
-			.post('/api/values', { index: this.index })
+			.post('/api/values', { index: this.state.index })
 			.then((response) => {
 				console.log(response);
 			})
@@ -28,7 +35,7 @@ class FibonacchiPage extends Component {
 		axios
 			.get('/api/values')
 			.then((response) => {
-				this.setState({ values: response.data.values, seenIndexes: response.data.seenIndexes });
+				this.setState({ calculatedValues: response.data.calculatedValues, seenIndexes: response.data.seenIndexes });
 			})
 			.catch((error) => {
 				console.log(error);
@@ -36,19 +43,19 @@ class FibonacchiPage extends Component {
 	};
 	renderValues = () => {
 		const values = [];
-		for (let key in this.state.values) {
-			values
-				.push(
-					<li key={key}>
-						For index {key}, I calculated {this.state.values[key]}
-					</li>,
-				)
+		for (let key in this.state.calculatedValues) {
+			values.push(
+				<li key={key}>
+					For index {key}, I calculated {this.state.calculatedValues[key]}
+				</li>,
+			);
 		}
 		return values;
 	};
 	render() {
 		return (
 			<>
+				{this.state.message.visible && <Message />}
 				<section>
 					<form onSubmit={this.handleSubmit}>
 						<label htmlFor="index">Enter your index:</label>
