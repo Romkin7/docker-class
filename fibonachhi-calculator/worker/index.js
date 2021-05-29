@@ -7,6 +7,7 @@ const redisClient = redis.createClient({
 const sub = redisClient.duplicate();
 
 function fibonachhi(index) {
+	console.log(index);
 	if (index < 2) {
 		return 1;
 	} else {
@@ -15,7 +16,8 @@ function fibonachhi(index) {
 }
 
 sub.on('message', (channel, message) => {
-	return redisClient.hset('values', fibonachhi(parseInt(message)));
+	console.log(message)
+	return redisClient.hset('values', message, fibonachhi(parseInt(message)));
 });
 
 sub.subscribe('insert');
